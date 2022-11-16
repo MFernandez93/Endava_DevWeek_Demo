@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: frontend-dev
+    image: frontend-dev
+    build: ./frontend
+    volumes:
+      - ./frontend/src:/app/src
+    ports:
+      - 3000:3000
+
+  api:
+    container_name: backend-dev
+    build: ./backend
+    volumes:
+      - ./backend/src:/app/src
+    environment:
+      PORT: 5001
+      DB_URL: mongodb://db_devweek:27017
+    ports:
+      - 5001:5001
+
+  db_devweek:
+    image: mongo:4.0-xenial
+    ports: 
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
