@@ -4,7 +4,11 @@ services:
   web:
     container_name: frontend-dev
     image: frontend-dev
-    build: ./frontend
+    #build: ./frontend.
+    build:
+      args:
+        PORT: 3000
+        PROJECT_PATH: './frontend'
     volumes:
       - ./frontend/src:/app/src
     ports:
@@ -12,12 +16,18 @@ services:
 
   api:
     container_name: backend-dev
-    build: ./backend
+    #build: ./backend
+    build:
+      args:
+        PORT: 4000
+        PROJECT_PATH: './backend'
+
     volumes:
       - ./backend/src:/app/src
     environment:
-      PORT: 5001
       DB_URL: mongodb://db_jcc:27017
+    ports:
+      - 5500:4000
 
   db_jcc:
     image: mongo:latest
