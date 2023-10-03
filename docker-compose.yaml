@@ -4,7 +4,6 @@ services:
   web:
     container_name: frontend-dev
     image: frontend-dev
-    #build: ./frontend.
     build:
       args:
         PORT: 3000
@@ -16,7 +15,6 @@ services:
 
   api:
     container_name: backend-dev
-    #build: ./backend
     build:
       args:
         PORT: 4000
