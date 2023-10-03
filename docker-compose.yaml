@@ -17,12 +17,10 @@ services:
       - ./backend/src:/app/src
     environment:
       PORT: 5001
-      DB_URL: mongodb://db_devweek:27017
-    ports:
-      - 5001:5001
+      DB_URL: mongodb://db_jcc:27017
 
-  db_devweek:
-    image: mongo:4.0-xenial
+  db_jcc:
+    image: mongo:latest
     ports: 
       - 27017:27017
     volumes:

@@ -7,7 +7,7 @@ function App() {
   const [message, setMessage] = useState([]);
 
   const fetchData = () => {
-    return fetch("http://localhost:5001")
+    return fetch("http://localhost:4000")
       .then((response) => response.json())
       .then((data) => {
         setMessage(data.message)
